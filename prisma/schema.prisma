@@ -1,0 +1,187 @@
+// The Royal Heritage — Prisma schema (PostgreSQL / Neon)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CUSTOMER
+  ADMIN
+}
+
+enum BookingStatus {
+  CONFIRMED
+  CANCELLED
+}
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum ReservationKind {
+  DINING
+  SPA
+  EXPERIENCE
+  CELEBRATION
+  CONTACT
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  phone        String?
+  role         Role      @default(CUSTOMER)
+  createdAt    DateTime  @default(now())
+  bookings     Booking[]
+}
+
+model Room {
+  id                String    @id @default(cuid())
+  slug              String    @unique
+  name              String
+  category          String
+  tagline           String
+  description       String    @db.Text
+  baseRate          Int
+  size              Int
+  view              String
+  bed               String
+  maxAdults         Int
+  maxGuests         Int
+  inventory         Int
+  breakfastIncluded Boolean   @default(false)
+  images            String[]
+  amenities         String[]
+  inclusions        String[]
+  cancellation      String    @db.Text
+  active            Boolean   @default(true)
+  sortOrder         Int       @default(0)
+  bookings          Booking[]
+}
+
+model Booking {
+  id            String         @id @default(cuid())
+  ref           String         @unique
+  userId        String?
+  user          User?          @relation(fields: [userId], references: [id], onDelete: SetNull)
+  roomId        String
+  room          Room           @relation(fields: [roomId], references: [id])
+  checkIn       DateTime       @db.Date
+  checkOut      DateTime       @db.Date
+  nights        Int
+  rooms         Int
+  adults        Int
+  children      Int
+  firstName     String
+  lastName      String
+  email         String
+  phone         String
+  country       String
+  arrivalTime   String?
+  requests      String?        @db.Text
+  promoCode     String?
+  discount      Int            @default(0)
+  roomTotal     Int
+  extrasTotal   Int            @default(0)
+  subtotal      Int
+  tax           Int
+  total         Int
+  paymentMethod String
+  paymentLast4  String?
+  status        BookingStatus  @default(CONFIRMED)
+  createdAt     DateTime       @default(now())
+  cancelledAt   DateTime?
+  extras        BookingExtra[]
+
+  @@index([roomId, checkIn, checkOut])
+  @@index([email])
+  @@index([userId])
+}
+
+model Extra {
+  id               String         @id @default(cuid())
+  code             String         @unique
+  name             String
+  description      String
+  price            Int
+  perGuestPerNight Boolean        @default(false)
+  active           Boolean        @default(true)
+  sortOrder        Int            @default(0)
+  bookingExtras    BookingExtra[]
+}
+
+model BookingExtra {
+  id        String  @id @default(cuid())
+  bookingId String
+  booking   Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  extraId   String
+  extra     Extra   @relation(fields: [extraId], references: [id])
+  name      String
+  amount    Int
+
+  @@index([bookingId])
+}
+
+model Reservation {
+  id        String          @id @default(cuid())
+  ref       String          @unique
+  kind      ReservationKind
+  item      String
+  name      String
+  email     String
+  phone     String?
+  date      DateTime?       @db.Date
+  time      String?
+  guests    Int?
+  notes     String?         @db.Text
+  createdAt DateTime        @default(now())
+
+  @@index([email])
+  @@index([kind])
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model PromoCode {
+  id        String    @id @default(cuid())
+  code      String    @unique
+  label     String
+  pct       Int
+  minNights Int       @default(1)
+  // Comma-separated list of room categories (e.g. "Suites,Villas"). Null = all categories.
+  category  String?
+  active    Boolean   @default(true)
+  expiresAt DateTime?
+}
+
+model Review {
+  id         String       @id @default(cuid())
+  name       String
+  email      String
+  location   String?
+  rating     Int
+  title      String
+  comment    String       @db.Text
+  roomName   String?
+  bookingRef String?      @unique
+  verified   Boolean      @default(false)
+  status     ReviewStatus @default(PENDING)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+
+  @@index([status, createdAt])
+  @@index([email])
+}
