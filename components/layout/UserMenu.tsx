@@ -51,13 +51,13 @@ export default function UserMenu({ user, light }: { user: SessionUser; light: bo
         <span className="hidden md:inline">{user.name.split(" ")[0]}</span>
       </button>
       {open && (
-        <div className="absolute right-0 top-full z-[999] mt-3 w-56 animate-slide-down whitespace-nowrap border border-ivory-400 bg-ivory-50 py-2 shadow-luxe">
-          <Link href="/account" onClick={() => setOpen(false)} className="block px-5 py-2.5 text-sm text-espresso hover:bg-ivory-200">My Account</Link>
-          <Link href="/my-booking" onClick={() => setOpen(false)} className="block px-5 py-2.5 text-sm text-espresso hover:bg-ivory-200">Find a Booking</Link>
+        <div className="absolute right-0 top-full z-[999] mt-3 w-52 max-w-[calc(100vw-2rem)] animate-slide-down whitespace-nowrap border border-ivory-400 bg-ivory-50 py-2 shadow-luxe sm:w-56">
+          <Link href="/account" onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-espresso hover:bg-ivory-200 sm:px-5">My Account</Link>
+          <Link href="/my-booking" onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-espresso hover:bg-ivory-200 sm:px-5">Find a Booking</Link>
           {user.role === "ADMIN" && (
-            <Link href="/admin" onClick={() => setOpen(false)} className="block px-5 py-2.5 text-sm text-gold hover:bg-ivory-200">Admin Dashboard</Link>
+            <Link href="/admin" onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-gold hover:bg-ivory-200 sm:px-5">Admin Dashboard</Link>
           )}
-          <button onClick={logout} className="block w-full border-t border-ivory-400 px-5 py-2.5 text-left text-sm text-espresso-50 hover:bg-ivory-200">
+          <button onClick={logout} className="block w-full border-t border-ivory-400 px-4 py-2.5 text-left text-sm text-espresso-50 hover:bg-ivory-200 sm:px-5">
             Sign Out
           </button>
         </div>

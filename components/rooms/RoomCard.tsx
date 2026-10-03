@@ -84,21 +84,21 @@ export default function RoomCard({
   return (
     <article className={`group flex h-full flex-col bg-ivory-50 ${layout === "carousel" ? "" : "border border-ivory-400"}`}>
       <Link href={`/stay/${room.slug}${suffix}`} className="relative block">
-        <ZoomImage src={room.images[0]} alt={room.name} className="aspect-[4/5] w-full" sizes="(max-width:768px) 85vw, 33vw" />
-        <span className="absolute left-5 top-5 bg-ivory-50/90 px-3 py-1.5 text-[10px] uppercase tracking-luxe text-espresso">{room.category}</span>
+        <ZoomImage src={room.images?.[0] || "/img/room-ocean.webp"} alt={room.name} className="aspect-[4/5] w-full" sizes="(max-width:768px) 85vw, 33vw" />
+        <span className="absolute left-5 top-5 bg-ivory-50/90 px-3 py-1.5 text-[11px] uppercase tracking-luxe text-espresso">{room.category}</span>
       </Link>
       <div className="flex flex-1 flex-col p-6 sm:p-7">
         <p className="eyebrow">{room.view} · {room.size.toLocaleString("en-IN")} sq ft</p>
-        <h3 className="mt-3 text-[28px] leading-tight">
+        <h3 className="mt-3 text-2xl sm:text-[28px] leading-tight">
           <Link href={`/stay/${room.slug}${suffix}`} className="transition-colors hover:text-gold">{room.name}</Link>
         </h3>
         <p className="mt-2 text-sm text-espresso-50">{room.tagline}</p>
         <div className="mt-auto flex items-end justify-between pt-6">
           <div>
-            <p className="text-[10px] uppercase tracking-wider2 text-espresso-50">From</p>
+            <p className="text-[11px] uppercase tracking-wider2 text-espresso-50">From</p>
             <p className="font-serif text-2xl">{formatINR(room.baseRate)}<span className="text-sm text-espresso-50"> / night</span></p>
           </div>
-          <Link href={`/stay/${room.slug}${suffix}`} className="link-underline text-[11px] uppercase tracking-luxe text-gold">Discover</Link>
+          <Link href={`/stay/${room.slug}${suffix}`} className="link-underline inline-flex min-h-[44px] items-center text-[11px] uppercase tracking-luxe text-gold">Discover</Link>
         </div>
       </div>
     </article>

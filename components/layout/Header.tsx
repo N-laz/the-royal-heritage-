@@ -35,9 +35,9 @@ export default function Header({ user }: { user: SessionUser }) {
   if (pathname.startsWith("/admin")) {
     return (
       <header className="no-print fixed inset-x-0 top-0 z-50 border-b border-ivory-400 bg-ivory-50/95 backdrop-blur">
-        <div className="container flex h-16 items-center justify-between">
+        <div className="container px-4 sm:px-6 flex h-16 items-center justify-between">
           <Logo className="scale-90" />
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 sm:gap-6">
             <Link href="/" className="text-[11px] uppercase tracking-wider2 text-espresso-50 hover:text-gold">View site</Link>
             <UserMenu user={user} light={false} />
           </div>
@@ -55,12 +55,14 @@ export default function Header({ user }: { user: SessionUser }) {
         transparent ? "bg-transparent" : open ? "bg-espresso" : "border-b border-ivory-400/70 bg-ivory-50/95 shadow-soft backdrop-blur"
       }`}
     >
-      <div className={`container grid grid-cols-[1fr_auto_1fr] items-center transition-all duration-500 ${scrolled ? "py-3" : "py-5"}`}>
+      <div className={`container px-4 sm:px-6 grid grid-cols-[1fr_auto_1fr] items-center transition-all duration-500 ${scrolled ? "py-3" : "py-5"}`}>
         <div className="flex items-center gap-6">
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close menu" : "Open menu"}
-            className={`flex items-center gap-3 lg:hidden ${light ? "text-ivory" : "text-espresso"}`}
+            aria-expanded={open}
+            id="mobile-menu-toggle"
+            className={`flex min-h-[44px] min-w-[44px] items-center gap-2.5 lg:hidden ${light ? "text-ivory" : "text-espresso"}`}
           >
             <span className="relative block h-3 w-6">
               <span className={`absolute left-0 top-0 h-px w-6 bg-current transition-transform duration-500 ${open ? "translate-y-1.5 rotate-45" : ""}`} />
@@ -78,13 +80,14 @@ export default function Header({ user }: { user: SessionUser }) {
 
         <Logo light={light} />
 
-        <div className="flex items-center justify-end gap-5">
+        <div className="flex items-center justify-end gap-3 sm:gap-5">
           <div className="hidden sm:block">
             <UserMenu user={user} light={light} />
           </div>
           <Link
+            id="header-book-now"
             href="/stay"
-            className={`${light ? "btn-gold" : "btn-primary"} !px-4 !py-2.5 text-[10px] sm:!px-5 sm:!py-3 sm:text-xs`}
+            className={`${light ? "btn-gold" : "btn-primary"} min-h-[38px] sm:min-h-[44px] !px-3.5 !py-2 text-xs sm:!px-5 sm:!py-3`}
           >
             Book<span className="hidden sm:inline">&nbsp;Now</span>
           </Link>
@@ -92,7 +95,7 @@ export default function Header({ user }: { user: SessionUser }) {
       </div>
 
       <nav className={`relative z-0 hidden border-t lg:block ${transparent ? "border-ivory/15" : "border-ivory-400/70"}`}>
-        <ul className="container flex items-center justify-center gap-8 py-3.5 xl:gap-11">
+        <ul className="container px-4 sm:px-6 flex items-center justify-center gap-8 py-3.5 xl:gap-11">
           {NAV_LINKS.map((link) => {
             const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
@@ -113,25 +116,25 @@ export default function Header({ user }: { user: SessionUser }) {
 
       {open && (
         <div className="h-[calc(100svh-72px)] animate-fade-in overflow-y-auto overscroll-contain bg-espresso lg:hidden">
-          <ul className="container flex flex-col gap-1 py-8">
+          <ul className="container px-4 flex flex-col gap-1 py-8">
             {NAV_LINKS.map((link, i) => (
               <li key={link.href} className="animate-fade-up" style={{ animationDelay: `${i * 40}ms` }}>
-                <Link href={link.href} className="block py-2.5 font-serif text-3xl text-ivory transition-colors hover:text-gold-light">
+                <Link href={link.href} className="flex min-h-[44px] items-center py-2 font-serif text-2xl sm:text-3xl text-ivory transition-colors hover:text-gold-light">
                   {link.label}
                 </Link>
               </li>
             ))}
-            <li className="mt-6 border-t border-ivory/15 pt-6">
-              <Link href="/my-booking" className="block py-2 text-sm uppercase tracking-wider2 text-ivory/80">My Booking</Link>
+            <li className="mt-6 border-t border-ivory/15 pt-6 space-y-1">
+              <Link href="/my-booking" className="flex min-h-[44px] items-center py-2 text-sm uppercase tracking-wider2 text-ivory/80 hover:text-gold-light">My Booking</Link>
               {user ? (
                 <>
-                  <Link href="/account" className="block py-2 text-sm uppercase tracking-wider2 text-ivory/80">My Account</Link>
+                  <Link href="/account" className="flex min-h-[44px] items-center py-2 text-sm uppercase tracking-wider2 text-ivory/80 hover:text-gold-light">My Account</Link>
                   {user.role === "ADMIN" && (
-                    <Link href="/admin" className="block py-2 text-sm uppercase tracking-wider2 text-gold-light">Admin Dashboard</Link>
+                    <Link href="/admin" className="flex min-h-[44px] items-center py-2 text-sm uppercase tracking-wider2 text-gold-light">Admin Dashboard</Link>
                   )}
                 </>
               ) : (
-                <Link href="/login" className="block py-2 text-sm uppercase tracking-wider2 text-ivory/80">Sign In</Link>
+                <Link href="/login" className="flex min-h-[44px] items-center py-2 text-sm uppercase tracking-wider2 text-ivory/80 hover:text-gold-light">Sign In</Link>
               )}
             </li>
           </ul>

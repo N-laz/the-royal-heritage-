@@ -13,17 +13,17 @@ const TILES = [
 
 export default function ExperiencesGrid() {
   return (
-    <section className="py-24 sm:py-32">
-      <div className="container">
+    <section className="py-16 sm:py-24 md:py-32">
+      <div className="container px-4 sm:px-6">
         <SectionHeading eyebrow="Experiences" title="Moments worthy of a maharaja" description="Unhurried rituals, adventures at sea and in the desert, and celebrations planned down to the last petal." />
-        <div className="mt-16 grid auto-rows-[260px] gap-5 md:grid-cols-4 md:auto-rows-[280px]">
+        <div className="mt-10 sm:mt-16 grid auto-rows-[220px] sm:auto-rows-[260px] gap-4 sm:gap-5 md:grid-cols-4 md:auto-rows-[280px]">
           {TILES.map((t, i) => (
             <Reveal key={t.title} delay={i * 80} className={t.span}>
               <Link href={t.href} className="group relative block h-full">
                 <ZoomImage src={t.image} alt={t.title} className="h-full w-full" overlay sizes="(max-width:768px) 100vw, 50vw" />
-                <div className="absolute inset-x-0 bottom-0 p-6 text-ivory">
-                  <p className="text-[10px] uppercase tracking-luxe text-gold-light">{t.sub}</p>
-                  <h3 className="mt-2 text-2xl sm:text-3xl">{t.title}</h3>
+                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 text-ivory">
+                  <p className="text-[11px] uppercase tracking-wider2 text-gold-light">{t.sub}</p>
+                  <h3 className="mt-1.5 sm:mt-2 text-2xl sm:text-3xl">{t.title}</h3>
                 </div>
               </Link>
             </Reveal>

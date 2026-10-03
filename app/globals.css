@@ -9,10 +9,12 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
   }
   body {
     @apply bg-ivory text-espresso font-sans antialiased;
     font-feature-settings: "kern", "liga";
+    overflow-x: clip;
   }
   h1, h2, h3, h4 {
     @apply font-serif font-normal;

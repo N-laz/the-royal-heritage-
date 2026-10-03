@@ -10,11 +10,11 @@ const VARIANT_CLASS: Record<Variant, string> = {
   light: "btn-light",
 };
 
-type Common = { variant?: Variant; className?: string; children: ReactNode };
+type Common = { id?: string; variant?: Variant; className?: string; children: ReactNode };
 
-export function ButtonLink({ href, variant = "primary", className = "", children }: Common & { href: string }) {
+export function ButtonLink({ href, variant = "primary", className = "", id, children }: Common & { href: string }) {
   return (
-    <Link href={href} className={`${VARIANT_CLASS[variant]} ${className}`}>
+    <Link id={id} href={href} className={`${VARIANT_CLASS[variant]} ${className}`}>
       {children}
     </Link>
   );

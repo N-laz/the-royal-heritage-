@@ -31,15 +31,16 @@ export default function NewsletterForm() {
     <form onSubmit={onSubmit} className="w-full">
       <div className="flex border-b border-ivory/30 focus-within:border-gold-light">
         <input
+          id="newsletter-email-input"
           type="email"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Your email address"
           aria-label="Email address"
-          className="w-full bg-transparent py-3 text-sm text-ivory placeholder:text-ivory/40 focus:outline-none"
+          className="w-full min-w-0 bg-transparent min-h-[44px] py-3 text-sm text-ivory placeholder:text-ivory/50 focus:outline-none"
         />
-        <button type="submit" disabled={state === "loading"} className="shrink-0 pl-4 text-[11px] uppercase tracking-luxe text-gold-light transition-colors hover:text-ivory disabled:opacity-50">
+        <button id="newsletter-submit-btn" type="submit" disabled={state === "loading"} className="shrink-0 min-h-[44px] px-3 text-[11px] uppercase tracking-luxe text-gold-light transition-colors hover:text-ivory disabled:opacity-50">
           {state === "loading" ? "…" : "Subscribe"}
         </button>
       </div>
