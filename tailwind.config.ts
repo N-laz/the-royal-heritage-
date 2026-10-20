@@ -35,6 +35,21 @@ const config: Config = {
           pale: "#E6D5B0",
           dark: "#8A6A3A",
         },
+        sandstone: {
+          DEFAULT: "#C9A989",
+          light: "#E4D1BD",
+          dark: "#A98565",
+        },
+        coastal: {
+          slate: "#5E7378",
+          mist: "#DCE5E2",
+        },
+        terracotta: {
+          DEFAULT: "#874B37",
+          light: "#A8624E",
+          dark: "#653424",
+        },
+        "sea-night": "#17252A",
       },
       fontFamily: {
         serif: ["var(--font-cormorant)", "Cormorant Garamond", "Georgia", "serif"],
@@ -51,6 +66,7 @@ const config: Config = {
         luxe: "0 20px 60px -20px rgba(42, 31, 24, 0.25)",
         soft: "0 8px 30px -12px rgba(42, 31, 24, 0.18)",
         gold: "0 0 0 1px rgba(168, 131, 75, 0.35)",
+        "soft-dark": "0 18px 48px -24px rgba(21, 15, 11, 0.42)",
       },
       transitionTimingFunction: { luxe: "cubic-bezier(0.22, 1, 0.36, 1)" },
       transitionDuration: { "1200": "1200ms", "1500": "1500ms" },
@@ -66,6 +82,7 @@ const config: Config = {
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         shimmer: { "0%": { backgroundPosition: "-200% 0" }, "100%": { backgroundPosition: "200% 0" } },
+        progress: { "0%": { width: "0%" }, "100%": { width: "100%" } },
       },
       animation: {
         "fade-up": "fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both",
@@ -73,6 +90,7 @@ const config: Config = {
         "ken-burns": "ken-burns 12s ease-out both",
         "slide-down": "slide-down 0.3s ease-out both",
         shimmer: "shimmer 2.2s linear infinite",
+        progress: "progress 7s linear forwards",
       },
     },
   },

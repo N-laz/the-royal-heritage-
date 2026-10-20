@@ -59,31 +59,35 @@ export default async function RoomPage({ params, searchParams }: { params: Param
         </div>
       </section>
 
-      <section className="container py-16">
-        <RoomGallery images={room.images} name={room.name} />
-      </section>
-
-      <section className="container pb-24">
-        <RoomDetail
-          room={room}
-          today={today}
-          promo={promo}
-          initial={{
-            checkIn: valid ? ci! : defaultIn,
-            checkOut: valid ? co! : addDaysISO(defaultIn, 3),
-            rooms: num(str(sp.rooms), 1, 1, 5),
-            adults: num(str(sp.adults), Math.min(2, room.maxAdults), 1, 12),
-            children: num(str(sp.children), 0, 0, 6),
-          }}
-        />
-      </section>
-
-      <section className="bg-ivory-300/60 py-24">
+      <section className="surface-dark py-16">
         <div className="container">
-          <p className="eyebrow text-center">Continue exploring</p>
-          <h2 className="mt-3 text-center text-display-sm">Other residences</h2>
+          <RoomGallery images={room.images} name={room.name} />
+        </div>
+      </section>
+
+      <section className="surface-dark pb-24">
+        <div className="container">
+          <RoomDetail
+            room={room}
+            today={today}
+            promo={promo}
+            initial={{
+              checkIn: valid ? ci! : defaultIn,
+              checkOut: valid ? co! : addDaysISO(defaultIn, 3),
+              rooms: num(str(sp.rooms), 1, 1, 5),
+              adults: num(str(sp.adults), Math.min(2, room.maxAdults), 1, 12),
+              children: num(str(sp.children), 0, 0, 6),
+            }}
+          />
+        </div>
+      </section>
+
+      <section className="surface-dark-soft py-24">
+        <div className="container">
+          <p className="eyebrow text-center text-gold-light">Continue exploring</p>
+          <h2 className="mt-3 text-center text-display-sm text-ivory">Other residences</h2>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {others.map((r) => <RoomCard key={r.id} room={r} />)}
+            {others.map((r) => <RoomCard key={r.id} room={r} dark />)}
           </div>
         </div>
       </section>

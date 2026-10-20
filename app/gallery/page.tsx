@@ -8,8 +8,10 @@ export default function GalleryPage() {
   return (
     <>
       <PageHero image="/img/aerial.webp" eyebrow="Gallery" title="Glimpses of the palace" subtitle="Sandstone and sea, lantern light and linen — a visual journey through The Royal Heritage." height="short" />
-      <section className="container py-24">
-        <GalleryGrid />
+      <section className="surface-dark py-24">
+        <div className="container">
+          <GalleryGrid />
+        </div>
       </section>
     </>
   );

@@ -9,21 +9,22 @@ export default function ContactPage() {
   return (
     <>
       <PageHero image="/img/aerial.webp" eyebrow="Contact" title="We would love to hear from you" subtitle="Our reservations and concierge team are available around the clock." height="short" />
-      <section className="container grid gap-14 py-24 lg:grid-cols-[1fr_1.5fr]">
+      <section className="surface-dark py-24">
+        <div className="container grid gap-14 lg:grid-cols-[1fr_1.5fr]">
         <div className="space-y-10">
           <div>
-            <p className="eyebrow">Address</p>
-            <p className="mt-3 font-serif text-2xl leading-snug">{SITE.address}</p>
+            <p className="eyebrow text-gold-light">Address</p>
+            <p className="mt-3 font-serif text-2xl leading-snug text-ivory">{SITE.address}</p>
           </div>
           <div>
-            <p className="eyebrow">Reservations</p>
-            <p className="mt-3 text-lg"><a href={`tel:${SITE.phone.replace(/\s/g, "")}`} className="hover:text-gold">{SITE.phone}</a></p>
-            <p className="mt-1 text-lg"><a href={`mailto:${SITE.email}`} className="hover:text-gold">{SITE.email}</a></p>
-            <p className="mt-1 text-sm text-espresso-50">WhatsApp: {SITE.whatsapp}</p>
+            <p className="eyebrow text-gold-light">Reservations</p>
+            <p className="mt-3 text-lg text-ivory"><a href={`tel:${SITE.phone.replace(/\s/g, "")}`} className="hover:text-gold-light">{SITE.phone}</a></p>
+            <p className="mt-1 text-lg text-ivory"><a href={`mailto:${SITE.email}`} className="hover:text-gold-light">{SITE.email}</a></p>
+            <p className="mt-1 text-sm text-ivory/60">WhatsApp: {SITE.whatsapp}</p>
           </div>
           <div>
-            <p className="eyebrow">Getting here</p>
-            <ul className="mt-3 space-y-2 text-sm text-espresso-50">
+            <p className="eyebrow text-gold-light">Getting here</p>
+            <ul className="mt-3 space-y-2 text-sm text-ivory/70">
               <li>Bhuj Airport (BHJ) — 60 km, about 1 hour</li>
               <li>Ahmedabad Airport (AMD) — 390 km, or a 45-minute private charter</li>
               <li>Bhuj Railway Station — 58 km</li>
@@ -31,11 +32,12 @@ export default function ContactPage() {
             </ul>
           </div>
           <div>
-            <p className="eyebrow">Hours</p>
-            <p className="mt-3 text-sm text-espresso-50">Check-in {SITE.checkInTime} · Check-out {SITE.checkOutTime} · Concierge 24 hours</p>
+            <p className="eyebrow text-gold-light">Hours</p>
+            <p className="mt-3 text-sm text-ivory/70">Check-in {SITE.checkInTime} · Check-out {SITE.checkOutTime} · Concierge 24 hours</p>
           </div>
         </div>
-        <ContactForm />
+          <ContactForm />
+        </div>
       </section>
     </>
   );

@@ -13,30 +13,30 @@ export default function CelebrationsPage() {
   return (
     <>
       <PageHero image="/img/wedding.webp" eyebrow="Celebrations" title="Celebrations of a lifetime" subtitle="Royal weddings, grand galas and intimate moments — orchestrated with palace grandeur by the sea." />
-      <section className="py-24">
-        <SectionHeading eyebrow="Weddings & Events" title="Where every occasion becomes legend" description="Our dedicated celebrations team designs each event from the first sketch to the final firework." />
+      <section className="surface-dark py-24">
+        <SectionHeading light eyebrow="Weddings & Events" title="Where every occasion becomes legend" description="Our dedicated celebrations team designs each event from the first sketch to the final firework." />
         <div className="mt-10 text-center">
           <ReserveButton kind="CELEBRATION" options={options} label="Start Planning" variant="gold" />
         </div>
       </section>
-      <div className="space-y-24 pb-24">
+      <div className="surface-dark space-y-24 pb-24">
         {CELEBRATIONS.map((c, i) => (
           <section key={c.slug} className="container">
             <div className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-20 ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}>
               <Reveal>
-                <ZoomImage src={c.image} alt={c.title} className="aspect-[4/3] w-full" />
+                <ZoomImage src={c.image} alt={c.title} className="aspect-[3/2] w-full" dark />
               </Reveal>
               <Reveal delay={120}>
-                <h2 className="text-display-md">{c.title}</h2>
+                <h2 className="text-display-md text-ivory">{c.title}</h2>
                 <span className="mt-6 block h-px w-16 bg-gold-light" />
-                <p className="mt-6 text-[15px] leading-relaxed text-espresso-50">{c.description}</p>
+                <p className="mt-6 text-[15px] leading-relaxed text-ivory/70">{c.description}</p>
                 <ul className="mt-8 grid gap-3 sm:grid-cols-2">
                   {c.highlights.map((h) => (
-                    <li key={h} className="flex items-center gap-3 text-sm"><span className="h-1.5 w-1.5 rotate-45 bg-gold" />{h}</li>
+                    <li key={h} className="flex items-center gap-3 text-sm text-ivory/80"><span className="h-1.5 w-1.5 rotate-45 bg-gold" />{h}</li>
                   ))}
                 </ul>
                 <div className="mt-10">
-                  <ReserveButton kind="CELEBRATION" item={c.title} label="Enquire" variant="outline" />
+                  <ReserveButton kind="CELEBRATION" item={c.title} label="Enquire" variant="outline" className="btn-light-dark" />
                 </div>
               </Reveal>
             </div>

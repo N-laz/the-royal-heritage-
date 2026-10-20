@@ -5,12 +5,12 @@ import { StarIcon } from "@/components/reviews/Stars";
 
 const LABELS = ["", "Poor", "Fair", "Good", "Very good", "Exceptional"];
 
-export default function StarInput({ value, onChange, error }: { value: number; onChange: (v: number) => void; error?: string }) {
+export default function StarInput({ value, onChange, error, dark = false }: { value: number; onChange: (v: number) => void; error?: string; dark?: boolean }) {
   const [hover, setHover] = useState(0);
   const shown = hover || value;
   return (
     <div>
-      <span className="field-label">Your rating</span>
+      <span className={dark ? "field-label-dark" : "field-label"}>Your rating</span>
       <div className="mt-2 flex items-center gap-4">
         <div className="flex gap-1" role="radiogroup" aria-label="Rating" onMouseLeave={() => setHover(0)}>
           {[1, 2, 3, 4, 5].map((n) => (
@@ -30,7 +30,7 @@ export default function StarInput({ value, onChange, error }: { value: number; o
             </button>
           ))}
         </div>
-        <span className="text-sm text-espresso-50">{LABELS[shown]}</span>
+        <span className={`text-sm ${dark ? "text-ivory/60" : "text-espresso-50"}`}>{LABELS[shown]}</span>
       </div>
       {error && <p className="field-error">{error}</p>}
     </div>

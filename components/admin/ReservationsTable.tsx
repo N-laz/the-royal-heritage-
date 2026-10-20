@@ -23,8 +23,8 @@ export default function ReservationsTable({ reservations }: { reservations: Rese
     <div className="border border-ivory-400 bg-ivory-50">
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-ivory-400 p-5">
         <h2 className="text-2xl">Reservations & enquiries <span className="text-base text-espresso-50">({rows.length})</span></h2>
-        <div className="flex flex-wrap gap-3">
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search…" className="field !w-56 !py-2.5" aria-label="Search reservations" />
+        <div className="flex w-full flex-wrap gap-3 sm:w-auto">
+          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search…" className="field !w-full sm:!w-56 !py-2.5" aria-label="Search reservations" />
           <select value={kind} onChange={(e) => setKind(e.target.value as typeof kind)} className="field !w-auto !py-2.5" aria-label="Filter by type">
             {KINDS.map((k) => <option key={k} value={k}>{k === "ALL" ? "All types" : k.charAt(0) + k.slice(1).toLowerCase()}</option>)}
           </select>

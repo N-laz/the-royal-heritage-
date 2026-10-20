@@ -59,8 +59,8 @@ export default function BookingsTable({ bookings }: { bookings: BookingView[] })
     <div className="border border-ivory-400 bg-ivory-50">
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-ivory-400 p-5">
         <h2 className="text-2xl">Bookings <span className="text-base text-espresso-50">({rows.length})</span></h2>
-        <div className="flex flex-wrap gap-3">
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search ref, guest, email, room…" className="field !w-64 !py-2.5" aria-label="Search bookings" />
+        <div className="flex w-full flex-wrap gap-3 sm:w-auto">
+          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search ref, guest, email, room…" className="field !w-full sm:!w-64 !py-2.5" aria-label="Search bookings" />
           <select value={status} onChange={(e) => setStatus(e.target.value as typeof status)} className="field !w-auto !py-2.5" aria-label="Filter by status">
             <option value="ALL">All statuses</option>
             <option value="CONFIRMED">Confirmed</option>

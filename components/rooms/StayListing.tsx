@@ -113,33 +113,33 @@ export default function StayListing({
 
       <section id="rooms" className="container scroll-mt-32 py-16">
         {promo && (
-          <div className="mb-8 flex flex-wrap items-center justify-between gap-3 border border-dashed border-gold bg-gold-pale/30 px-6 py-4 text-sm">
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-3 border border-dashed border-gold/40 bg-gold-pale/15 px-6 py-4 text-sm text-ivory/90">
             <span>
-              Promo code <strong className="tracking-wider2 text-gold-dark">{promo}</strong> will be applied at checkout (subject to its conditions).
+              Promo code <strong className="tracking-wider2 text-gold-light">{promo}</strong> will be applied at checkout (subject to its conditions).
             </span>
           </div>
         )}
 
-        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-ivory-400 pb-6">
+        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-ivory/20 pb-6">
           <div>
-            <p className="eyebrow">Accommodation</p>
-            <h2 className="mt-2 text-display-sm">
+            <p className="eyebrow text-gold-light">Accommodation</p>
+            <h2 className="mt-2 text-display-sm text-ivory">
               {visible.length} {visible.length === 1 ? "residence" : "residences"}
               {availability && (
-                <span className="block text-base text-espresso-50 sm:inline sm:text-lg">
+                <span className="block text-base text-ivory/70 sm:inline sm:text-lg">
                   {" "}· {formatDate(availability.checkIn, "short")} – {formatDate(availability.checkOut, "short")}, {availability.nights} night{availability.nights === 1 ? "" : "s"}
                 </span>
               )}
             </h2>
           </div>
           <div className="flex items-center gap-3">
-            <button onClick={() => setShowFilters((v) => !v)} className="btn-outline !px-5 !py-3 lg:hidden">
+            <button onClick={() => setShowFilters((v) => !v)} className="btn-light-dark !px-5 !py-3 lg:hidden">
               {showFilters ? "Hide filters" : "Filters"}
             </button>
             <select
               value={filters.sort}
               onChange={(e) => setFilters({ ...filters, sort: e.target.value as Filters["sort"] })}
-              className="field !w-auto !py-3"
+              className="field-dark !w-auto !py-3"
               aria-label="Sort rooms"
             >
               <option value="recommended">Recommended</option>
@@ -150,7 +150,7 @@ export default function StayListing({
           </div>
         </div>
 
-        {error && <p className="mt-6 border-l-2 border-red-600 bg-red-50 px-4 py-3 text-sm text-red-800">{error}</p>}
+        {error && <p className="mt-6 border-l-2 border-red-600 bg-red-50/10 px-4 py-3 text-sm text-red-200">{error}</p>}
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[280px_1fr]">
           <div className={`${showFilters ? "block" : "hidden"} lg:block`}>
@@ -164,14 +164,14 @@ export default function StayListing({
           </div>
           <div className={`space-y-8 transition-opacity ${loading ? "opacity-50" : ""}`}>
             {visible.length === 0 ? (
-              <div className="border border-ivory-400 bg-ivory-50 p-12 text-center">
-                <p className="font-serif text-3xl">No residences match these filters</p>
-                <p className="mt-3 text-sm text-espresso-50">Try widening your filters or choosing different dates.</p>
+              <div className="card-dark p-12 text-center">
+                <p className="font-serif text-3xl text-ivory">No residences match these filters</p>
+                <p className="mt-3 text-sm text-ivory/60">Try widening your filters or choosing different dates.</p>
                 <button onClick={() => setFilters(DEFAULT_FILTERS)} className="btn-primary mt-8">Clear filters</button>
               </div>
             ) : (
               visible.map((room) => (
-                <RoomCard key={room.id} room={room} layout="list" query={query} availability={availMap.get(room.slug)} nights={availability?.nights} />
+                <RoomCard key={room.id} room={room} layout="list" dark query={query} availability={availMap.get(room.slug)} nights={availability?.nights} />
               ))
             )}
           </div>

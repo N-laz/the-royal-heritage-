@@ -117,7 +117,7 @@ export default function StepDatesExtras({
             <button type="button" onClick={removePromo} className="text-[11px] uppercase tracking-wider2 text-espresso-50 hover:text-red-700">Remove</button>
           </div>
         ) : (
-          <div className="mt-5 flex gap-3">
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row">
             <input
               value={promoInput}
               onChange={(e) => setPromoInput(e.target.value.toUpperCase())}
@@ -128,10 +128,10 @@ export default function StepDatesExtras({
                 }
               }}
               placeholder="e.g. ROYAL10"
-              className="field uppercase tracking-wider2"
+              className="field min-w-0 uppercase tracking-wider2"
               aria-label="Promo code"
             />
-            <button type="button" onClick={applyPromo} className="btn-outline shrink-0">Apply</button>
+            <button type="button" onClick={applyPromo} className="btn-outline shrink-0 sm:self-auto">Apply</button>
           </div>
         )}
         {promoMessage && (

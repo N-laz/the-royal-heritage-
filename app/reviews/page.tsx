@@ -21,20 +21,20 @@ export default async function ReviewsPage({ searchParams }: { searchParams: Prom
     <>
       <PageHero image="/img/couple-villa.webp" eyebrow="Guest Reviews" title="In our guests' words" subtitle="Honest reflections from those who have stayed with us — and a place to share your own." height="short" />
 
-      <section className="container py-20 sm:py-28">
-        <div className="grid gap-10 lg:grid-cols-[320px_1fr]">
+      <section className="surface-dark py-20 sm:py-28">
+        <div className="container grid gap-10 lg:grid-cols-[320px_1fr]">
           <aside className="lg:sticky lg:top-32 lg:self-start">
-            <ReviewSummary stats={stats} />
+            <ReviewSummary stats={stats} dark />
           </aside>
-          <ReviewList reviews={reviews} />
+          <ReviewList reviews={reviews} dark />
         </div>
       </section>
 
-      <section id="write" className="scroll-mt-28 bg-ivory-200 py-20 sm:py-28">
+      <section id="write" className="surface-dark-soft scroll-mt-28 py-20 sm:py-28">
         <div className="container max-w-3xl">
-          <SectionHeading eyebrow="Share your stay" title="Write a review" description="Tell us what made your time with us memorable. Reviews appear once approved by our guest relations team." />
+          <SectionHeading light eyebrow="Share your stay" title="Write a review" description="Tell us what made your time with us memorable. Reviews appear once approved by our guest relations team." />
           <div className="mt-12">
-            <ReviewForm defaults={{ name: user?.name, email: user?.email, bookingRef: ref }} />
+            <ReviewForm defaults={{ name: user?.name, email: user?.email, bookingRef: ref }} dark />
           </div>
         </div>
       </section>

@@ -6,16 +6,18 @@ export default function PageHero({
   title,
   subtitle,
   height = "tall",
+  objectPosition = "object-center",
 }: {
   image: string;
   eyebrow: string;
   title: string;
   subtitle?: string;
   height?: "tall" | "short";
+  objectPosition?: string;
 }) {
   return (
     <section className={`relative flex items-end overflow-hidden bg-espresso ${height === "tall" ? "h-[78vh] min-h-[520px]" : "h-[56vh] min-h-[420px]"}`}>
-      <Image src={image} alt="" fill priority sizes="100vw" className="animate-ken-burns object-cover" />
+      <Image src={image} alt="" fill priority sizes="100vw" className={`animate-ken-burns object-cover ${objectPosition}`} />
       <div className="absolute inset-0 bg-gradient-to-b from-espresso-600/60 via-espresso-600/20 to-espresso-600/80" />
       <div className="container relative pb-16 text-ivory sm:pb-20">
         <p className="eyebrow animate-fade-up text-gold-light">{eyebrow}</p>

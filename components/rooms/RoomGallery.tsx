@@ -31,7 +31,7 @@ export default function RoomGallery({ images, name }: { images: string[]; name: 
           <button
             key={src + i}
             onClick={() => setActive(i)}
-            className={`group relative overflow-hidden bg-ivory-300 ${i === 0 ? "aspect-[4/3] sm:col-span-2 sm:row-span-2 sm:aspect-auto" : "aspect-[4/3]"}`}
+            className={`group relative overflow-hidden bg-ivory/20 ${i === 0 ? "aspect-[4/3] sm:col-span-2 sm:row-span-2 sm:aspect-auto" : "aspect-[4/3]"}`}
             aria-label={`Open image ${i + 1} of ${name}`}
           >
             <Image src={src} alt={`${name} — image ${i + 1}`} fill sizes={i === 0 ? "(max-width:640px) 100vw, 66vw" : "(max-width:640px) 100vw, 33vw"} className="object-cover transition-transform duration-1500 ease-luxe group-hover:scale-110" />

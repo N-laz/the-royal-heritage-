@@ -39,19 +39,21 @@ export default async function StayPage({ searchParams }: { searchParams: SP }) {
         subtitle="Six ways to live like royalty by the sea — each with its own view, its own rhythm and its own story."
         height="short"
       />
-      <StayListing
-        rooms={rooms}
-        today={today}
-        promo={promo}
-        hasInitialDates={hasInitialDates}
-        initialSearch={{
-          checkIn: hasInitialDates ? ci! : defaultIn,
-          checkOut: hasInitialDates ? co! : addDaysISO(defaultIn, 3),
-          rooms: num(str(sp.rooms), 1, 1, 5),
-          adults: num(str(sp.adults), 2, 1, 12),
-          children: num(str(sp.children), 0, 0, 6),
-        }}
-      />
+      <section className="surface-dark min-h-[60vh]">
+        <StayListing
+          rooms={rooms}
+          today={today}
+          promo={promo}
+          hasInitialDates={hasInitialDates}
+          initialSearch={{
+            checkIn: hasInitialDates ? ci! : defaultIn,
+            checkOut: hasInitialDates ? co! : addDaysISO(defaultIn, 3),
+            rooms: num(str(sp.rooms), 1, 1, 5),
+            adults: num(str(sp.adults), 2, 1, 12),
+            children: num(str(sp.children), 0, 0, 6),
+          }}
+        />
+      </section>
     </>
   );
 }

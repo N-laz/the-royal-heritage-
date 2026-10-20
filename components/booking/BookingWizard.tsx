@@ -225,7 +225,7 @@ export default function BookingWizard({
           <p className="mt-8 border-l-2 border-red-600 bg-red-50 px-4 py-3 text-sm text-red-800">{submitError || stayError}</p>
         )}
 
-        <div className="mt-10 flex items-center justify-between gap-4 border-t border-ivory-400 pt-8">
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-ivory-400 pt-8">
           {step > 0 ? (
             <button type="button" onClick={() => setStep(step - 1)} className="btn-outline">← Back</button>
           ) : (
@@ -234,7 +234,7 @@ export default function BookingWizard({
           {step < 2 ? (
             <button type="button" onClick={next} disabled={loading || !quote} className="btn-primary">Continue →</button>
           ) : (
-            <button type="button" onClick={submit} disabled={submitting || !quote} className="btn-gold min-w-[220px]">
+            <button type="button" onClick={submit} disabled={submitting || !quote} className="btn-gold w-full sm:min-w-[220px] sm:w-auto">
               {submitting && <span className="h-3.5 w-3.5 animate-spin rounded-full border border-current border-t-transparent" />}
               {payment.method === "PAY_AT_HOTEL" ? "Confirm Reservation" : `Pay ${quote ? formatINR(quote.breakdown.total) : ""}`}
             </button>

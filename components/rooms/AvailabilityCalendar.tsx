@@ -72,26 +72,26 @@ export default function AvailabilityCalendar({
   const last = days[days.length - 1]?.date;
 
   return (
-    <div className="border border-ivory-400 bg-ivory-50 p-5 sm:p-7">
+    <div className="border border-ivory/20 bg-espresso-600/40 p-5 sm:p-7">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="eyebrow">Availability · Next 35 nights</p>
-          <p className="mt-1 font-serif text-2xl">
+          <p className="eyebrow text-gold-light">Availability · Next 35 nights</p>
+          <p className="mt-1 font-serif text-2xl text-ivory">
             {first && last ? (monthLabel(first) === monthLabel(last) ? monthLabel(first) : `${monthLabel(first)} – ${monthLabel(last)}`) : "Loading…"}
           </p>
         </div>
-        <p className="text-xs text-espresso-50">
+        <p className="text-xs text-ivory/60">
           {!checkIn || checkOut ? "Select your check-in date" : "Now select your check-out date"}
         </p>
       </div>
 
-      <div className="mt-6 grid grid-cols-7 gap-1 text-center text-[10px] uppercase tracking-wider2 text-espresso-50">
+      <div className="mt-6 grid grid-cols-7 gap-1 text-center text-[10px] uppercase tracking-wider2 text-ivory/60">
         {WEEKDAYS.map((d) => <div key={d} className="py-2">{d}</div>)}
       </div>
 
       <div className={`grid grid-cols-7 gap-1 ${loading ? "animate-pulse" : ""}`}>
         {loading
-          ? Array.from({ length: 35 }).map((_, i) => <div key={i} className="aspect-square bg-ivory-300/60" />)
+          ? Array.from({ length: 35 }).map((_, i) => <div key={i} className="aspect-square bg-ivory/20" />)
           : (
             <>
               {Array.from({ length: leading }).map((_, i) => <div key={`blank-${i}`} />)}
@@ -112,31 +112,31 @@ export default function AvailabilityCalendar({
                         : inRange
                           ? "border-gold-pale bg-gold-pale/50"
                           : soldOut
-                            ? "cursor-not-allowed border-transparent bg-ivory-300/40 text-espresso-50/50 line-through"
-                            : "border-ivory-400 hover:border-gold"
+                            ? "cursor-not-allowed border-transparent bg-ivory/30 text-ivory/50 line-through"
+                            : "border-ivory/20 hover:border-gold"
                     }`}
                   >
                     <span className="font-serif text-base leading-none sm:text-lg">{dateNum}</span>
-                    <span className={`mt-1 hidden text-[9px] sm:block ${isStart || isEnd ? "text-gold-light" : day.festive ? "text-gold-dark" : "text-espresso-50"}`}>
+                    <span className={`mt-1 hidden text-[9px] sm:block ${isStart || isEnd ? "text-gold-light" : day.festive ? "text-gold-dark" : "text-ivory/60"}`}>
                       {soldOut ? "Full" : shortRate(day.rate)}
                     </span>
                     {day.festive && !soldOut && <span className="absolute right-1 top-1 h-1 w-1 rounded-full bg-gold" />}
                   </button>
                 );
               })}
-              {!byDate.size && <p className="col-span-7 py-6 text-sm text-espresso-50">No calendar data.</p>}
+              {!byDate.size && <p className="col-span-7 py-6 text-sm text-ivory/60">No calendar data.</p>}
             </>
           )}
       </div>
 
-      <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-[11px] text-espresso-50">
-        <span className="flex items-center gap-2"><span className="h-3 w-3 border border-ivory-400" /> Available</span>
+      <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-[11px] text-ivory/60">
+        <span className="flex items-center gap-2"><span className="h-3 w-3 border border-ivory/20" /> Available</span>
         <span className="flex items-center gap-2"><span className="h-3 w-3 bg-espresso" /> Selected</span>
-        <span className="flex items-center gap-2"><span className="h-3 w-3 bg-ivory-300" /> Sold out</span>
+        <span className="flex items-center gap-2"><span className="h-3 w-3 bg-ivory/30" /> Sold out</span>
         <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-gold" /> Festive season (+25%)</span>
         <span>Fri & Sat nights +12%</span>
       </div>
-      {message && <p className="mt-4 text-sm text-red-700">{message}</p>}
+      {message && <p className="mt-4 text-sm text-red-400">{message}</p>}
     </div>
   );
 }

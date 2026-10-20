@@ -57,8 +57,8 @@ export default function ReviewsTable({ reviews }: { reviews: ReviewView[] }) {
     <div className="border border-ivory-400 bg-ivory-50">
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-ivory-400 p-5">
         <h2 className="text-2xl">Guest reviews <span className="text-base text-espresso-50">({rows.length})</span></h2>
-        <div className="flex flex-wrap gap-3">
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search reviews…" className="field !w-56 !py-2.5" aria-label="Search reviews" />
+        <div className="flex w-full flex-wrap gap-3 sm:w-auto">
+          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search reviews…" className="field !w-full sm:!w-56 !py-2.5" aria-label="Search reviews" />
           <select value={status} onChange={(e) => setStatus(e.target.value as typeof status)} className="field !w-auto !py-2.5" aria-label="Filter by status">
             {STATUSES.map((s) => (
               <option key={s} value={s}>
